@@ -1,0 +1,223 @@
+{
+  "nodes": {
+    "世界": {
+      "type": "root",
+      "description": "所有概念的总入口",
+      "parent": null,
+      "children": [
+        "人类",
+        "自然",
+        "社会"
+      ]
+    },
+    "人类": {
+      "type": "category",
+      "description": "与人类相关的概念",
+      "parent": "世界",
+      "children": [
+        "关系",
+        "行为",
+        "身体"
+      ]
+    },
+    "关系": {
+      "type": "category",
+      "description": "人与人之间的关系与称谓",
+      "parent": "人类",
+      "children": [
+        "家庭关系"
+      ]
+    },
+    "家庭关系": {
+      "type": "category",
+      "description": "家庭内部的角色称谓",
+      "parent": "关系",
+      "children": [
+        "妈妈",
+        "爸爸",
+        "孩子",
+        "엄마",
+        "mother",
+        "father",
+        "child"
+      ]
+    },
+    "妈妈": {
+      "type": "word",
+      "description": "母亲的常见称呼，强调亲属关系中的照护角色",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "爸爸",
+        "孩子"
+      ]
+    },
+    "爸爸": {
+      "type": "word",
+      "description": "父亲的常见称呼，家庭关系中的父系角色",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "妈妈",
+        "孩子"
+      ]
+    },
+    "孩子": {
+      "type": "word",
+      "description": "家庭关系中的后代角色",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "妈妈",
+        "爸爸"
+      ]
+    },
+    "行为": {
+      "type": "category",
+      "description": "人类动作与行为方式",
+      "parent": "人类",
+      "children": [
+        "感知行为",
+        "表达行为"
+      ]
+    },
+    "感知行为": {
+      "type": "category",
+      "description": "通过感官获取信息的行为",
+      "parent": "行为",
+      "children": [
+        "看",
+        "听",
+        "listen"
+      ]
+    },
+    "看": {
+      "type": "word",
+      "description": "中文中表示用视觉感知的动作",
+      "parent": "感知行为",
+      "children": [],
+      "related": [
+        "看",
+        "观察",
+        "listen"
+      ]
+    },
+    "听": {
+      "type": "word",
+      "description": "通过听觉感官获取信息的动作",
+      "parent": "感知行为",
+      "children": [],
+      "related": [
+        "看"
+      ]
+    },
+    "观察": {
+      "type": "word",
+      "description": "有目的地、持续地看并分析",
+      "parent": "感知行为",
+      "children": [],
+      "related": [
+        "看"
+      ]
+    },
+    "表达行为": {
+      "type": "category",
+      "description": "把思想和情感对外表达的行为",
+      "parent": "行为",
+      "children": [
+        "说"
+      ]
+    },
+    "说": {
+      "type": "word",
+      "description": "通过语言表达信息",
+      "parent": "表达行为",
+      "children": [],
+      "related": [
+        "看"
+      ]
+    },
+    "身体": {
+      "type": "category",
+      "description": "人类身体结构与器官",
+      "parent": "人类",
+      "children": [
+        "眼睛"
+      ]
+    },
+    "眼睛": {
+      "type": "word",
+      "description": "人类视觉器官，与“看”行为密切相关",
+      "parent": "身体",
+      "children": [],
+      "related": [
+        "看"
+      ]
+    },
+    "自然": {
+      "type": "category",
+      "description": "自然界概念",
+      "parent": "世界",
+      "children": []
+    },
+    "社会": {
+      "type": "category",
+      "description": "社会结构与制度概念",
+      "parent": "世界",
+      "children": []
+    },
+    "엄마": {
+      "type": "word",
+      "description": "한국어에서 어머니를 부르는 말",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "妈妈",
+        "mother",
+        "孩子"
+      ]
+    },
+    "mother": {
+      "type": "word",
+      "description": "English word for female parent",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "妈妈",
+        "엄마",
+        "father",
+        "child"
+      ]
+    },
+    "father": {
+      "type": "word",
+      "description": "English word for male parent",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "mother",
+        "child"
+      ]
+    },
+    "child": {
+      "type": "word",
+      "description": "English word for offspring",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "mother",
+        "father"
+      ]
+    },
+    "listen": {
+      "type": "word",
+      "description": "English verb for hearing attentively",
+      "parent": "感知行为",
+      "children": [],
+      "related": [
+        "看",
+        "听"
+      ]
+    }
+  }
+}

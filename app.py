@@ -1,82 +1,48 @@
 #!/usr/bin/env python3
-"""Textree MVP: 输入词语，展示其在概念树中的来龙去脉。"""
+"""Serve Textree web app locally."""
 
 from __future__ import annotations
 
 import argparse
-import json
+import functools
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from typing import Any
 
-KB_PATH = Path(__file__).with_name("knowledge_base.json")
-
-
-def load_nodes(path: Path = KB_PATH) -> dict[str, dict[str, Any]]:
-    data = json.loads(path.read_text(encoding="utf-8"))
-    return data["nodes"]
+ROOT = Path(__file__).resolve().parent
 
 
-def ancestry(nodes: dict[str, dict[str, Any]], word: str) -> list[str]:
-    path = []
-    current = word
+class UTF8StaticHandler(SimpleHTTPRequestHandler):
+    """Static handler with UTF-8 defaults for text assets."""
 
-    while current is not None:
-        path.append(current)
-        current = nodes[current].get("parent")
-
-    return list(reversed(path))
-
-
-def children(nodes: dict[str, dict[str, Any]], word: str) -> list[str]:
-    return nodes[word].get("children", [])
+    extensions_map = {
+        **SimpleHTTPRequestHandler.extensions_map,
+        ".js": "application/javascript; charset=utf-8",
+        ".json": "application/json; charset=utf-8",
+        ".css": "text/css; charset=utf-8",
+        ".html": "text/html; charset=utf-8",
+    }
 
 
-def related(nodes: dict[str, dict[str, Any]], word: str) -> list[str]:
-    return nodes[word].get("related", [])
 
+def run_server(port: int) -> None:
+    handler = functools.partial(UTF8StaticHandler, directory=str(ROOT))
+    server = ThreadingHTTPServer(("0.0.0.0", port), handler)
+    print(f"Textree web app running at http://localhost:{port}")
+    print("Press Ctrl+C to stop.")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nServer stopped.")
 
-def format_report(nodes: dict[str, dict[str, Any]], word: str) -> str:
-    if word not in nodes:
-        options = "、".join(sorted(nodes.keys()))
-        return (
-            f"❌ 未找到词语：{word}\n"
-            f"你可以尝试这些词：{options}"
-        )
-
-    node = nodes[word]
-    chain = " > ".join(ancestry(nodes, word))
-    direct_children = children(nodes, word)
-    rel_words = related(nodes, word)
-
-    lines = [
-        f"⚡ 词语：{word}",
-        f"类型：{node.get('type', 'unknown')}",
-        f"定义：{node.get('description', '暂无说明')}",
-        f"全局路径：{chain}",
-    ]
-
-    if direct_children:
-        lines.append(f"下位概念：{'、'.join(direct_children)}")
-    else:
-        lines.append("下位概念：无")
-
-    if rel_words:
-        lines.append(f"相关词：{'、'.join(rel_words)}")
-    else:
-        lines.append("相关词：无")
-
-    return "\n".join(lines)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="输入一个词语，闪电般展示它在整体概念树中的上下文。"
+        description="Run local web server for Textree treemap experience."
     )
-    parser.add_argument("word", help="要查询的词语，如：妈妈、看")
+    parser.add_argument("--port", type=int, default=8000, help="Port to bind")
     args = parser.parse_args()
-
-    nodes = load_nodes()
-    print(format_report(nodes, args.word))
+    run_server(args.port)
 
 
 if __name__ == "__main__":

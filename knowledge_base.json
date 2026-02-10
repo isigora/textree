@@ -35,7 +35,11 @@
       "children": [
         "妈妈",
         "爸爸",
-        "孩子"
+        "孩子",
+        "엄마",
+        "mother",
+        "father",
+        "child"
       ]
     },
     "妈妈": {
@@ -83,17 +87,19 @@
       "parent": "行为",
       "children": [
         "看",
-        "听"
+        "听",
+        "listen"
       ]
     },
     "看": {
       "type": "word",
-      "description": "通过视觉感官获取信息的动作",
+      "description": "中文中表示用视觉感知的动作",
       "parent": "感知行为",
       "children": [],
       "related": [
-        "听",
-        "观察"
+        "看",
+        "观察",
+        "listen"
       ]
     },
     "听": {
@@ -159,6 +165,59 @@
       "description": "社会结构与制度概念",
       "parent": "世界",
       "children": []
+    },
+    "엄마": {
+      "type": "word",
+      "description": "한국어에서 어머니를 부르는 말",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "妈妈",
+        "mother",
+        "孩子"
+      ]
+    },
+    "mother": {
+      "type": "word",
+      "description": "English word for female parent",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "妈妈",
+        "엄마",
+        "father",
+        "child"
+      ]
+    },
+    "father": {
+      "type": "word",
+      "description": "English word for male parent",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "mother",
+        "child"
+      ]
+    },
+    "child": {
+      "type": "word",
+      "description": "English word for offspring",
+      "parent": "家庭关系",
+      "children": [],
+      "related": [
+        "mother",
+        "father"
+      ]
+    },
+    "listen": {
+      "type": "word",
+      "description": "English verb for hearing attentively",
+      "parent": "感知行为",
+      "children": [],
+      "related": [
+        "看",
+        "听"
+      ]
     }
   }
 }

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textree - 단어의 전체 맥락 지도</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Textree</h1>
+      <p>단어를 입력하면 전체 체계 속 위치와 주변 환경이 트리맵으로 나타납니다.</p>
+    </header>
+
+    <main>
+      <section class="search-panel">
+        <label for="wordInput">단어 검색</label>
+        <div class="search-row">
+          <input id="wordInput" type="text" placeholder="예: 엄마, 看, mother" />
+          <button id="searchBtn">검색</button>
+        </div>
+        <small>검색 후 트리맵에서 해당 노드가 반짝입니다. 노드를 클릭하면 상세 환경이 표시됩니다.</small>
+      </section>
+
+      <section class="layout">
+        <div class="treemap-card">
+          <h2>Treemap</h2>
+          <div id="treemap"></div>
+        </div>
+
+        <aside class="detail-card">
+          <h2>단어 환경</h2>
+          <div id="detail">노드를 클릭하거나 검색해 주세요.</div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
